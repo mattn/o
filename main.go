@@ -26,6 +26,7 @@ func main() {
 				if len(m) == 0 {
 					continue
 				}
+				log.Println(item.Title)
 				client.Notify(&gntp.Message{
 					Event:    "オッ",
 					Title:    "オッRSS",
