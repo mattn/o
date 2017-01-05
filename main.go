@@ -43,6 +43,6 @@ func main() {
 			log.Print(err)
 			continue
 		}
-		time.Sleep(30 * time.Second)
+		time.Sleep(time.Minute)
 	}
 }
