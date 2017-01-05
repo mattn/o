@@ -33,7 +33,7 @@ func main() {
 						Event:    "オッ",
 						Title:    "オッRSS",
 						Text:     item.Title,
-						Icon:     "https://raw.githubusercontent.com/mattn/o/icon.png",
+						Icon:     "https://raw.githubusercontent.com/mattn/o/master/icon.png",
 						Callback: m[0][1],
 					})
 				}
