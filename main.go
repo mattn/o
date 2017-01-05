@@ -19,26 +19,25 @@ func main() {
 	client.Register([]gntp.Notification{
 		{Event: "オッ", Enabled: true},
 	})
-
-	for {
-		err := rss.New(5, true, nil,
-			func(feed *rss.Feed, ch *rss.Channel, newitems []*rss.Item) {
-				for _, item := range newitems {
-					m := re.FindAllStringSubmatch(item.Title, -1)
-					if len(m) == 0 {
-						continue
-					}
-
-					client.Notify(&gntp.Message{
-						Event:    "オッ",
-						Title:    "オッRSS",
-						Text:     item.Title,
-						Icon:     "https://raw.githubusercontent.com/mattn/o/master/icon.png",
-						Callback: m[0][1],
-					})
+	feeder := rss.New(5, true, nil,
+		func(feed *rss.Feed, ch *rss.Channel, newitems []*rss.Item) {
+			for _, item := range newitems {
+				m := re.FindAllStringSubmatch(item.Title, -1)
+				if len(m) == 0 {
+					continue
 				}
-			},
-		).Fetch(`https://queryfeed.net/twitter?q=from%3Atodesking&title-type=tweet-text-full`, nil)
+				client.Notify(&gntp.Message{
+					Event:    "オッ",
+					Title:    "オッRSS",
+					Text:     item.Title,
+					Icon:     "https://raw.githubusercontent.com/mattn/o/master/icon.png",
+					Callback: m[0][1],
+				})
+			}
+		},
+	)
+	for {
+		err := feeder.Fetch(`https://queryfeed.net/twitter?q=from%3Atodesking&title-type=tweet-text-full`, nil)
 		if err != nil {
 			log.Print(err)
 			continue
