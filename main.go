@@ -33,7 +33,7 @@ func main() {
 						Event:    "オッ",
 						Title:    "オッRSS",
 						Text:     item.Title,
-						Icon:     "https://pbs.twimg.com/profile_images/1555680104/todesking.png",
+						Icon:     "https://raw.githubusercontent.com/mattn/o/icon.png",
 						Callback: m[0][1],
 					})
 				}
