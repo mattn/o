@@ -5,8 +5,8 @@ import (
 	"regexp"
 	"time"
 
-	rss "github.com/jteeuwen/go-pkg-rss"
 	"github.com/mattn/go-gntp"
+	rss "github.com/mattn/go-pkg-rss"
 )
 
 var (
